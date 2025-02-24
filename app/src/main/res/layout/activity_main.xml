@@ -1,19 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/dark_background"
+    android:id="@+id/main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Profile Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_profile_picture"
+                    android:contentDescription="@string/profile_picture"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/julia_profile" />
+
+                <TextView
+                    android:id="@+id/hello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_wide"
+                    android:layout_toEndOf="@id/profile_image"
+                    android:text="@string/hello"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    tools:ignore="RelativeOverlap" />
+
+                <TextView
+                    android:id="@+id/full_nameTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/hello"
+                    android:layout_marginStart="@dimen/margin_wide"
+                    android:layout_marginTop="@dimen/margin_half"
+                    android:layout_marginBottom="-26dp"
+                    android:layout_toEndOf="@+id/profile_image"
+                    android:text="@string/joana_malhibu"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/meun_ImgView"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/menu_button"
+                    android:src="@drawable/menu_white" />
+
+            </RelativeLayout>
+
+            <!-- Stats Cards -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true">
+
+                <!-- Conteneur principal en FrameLayout pour superposer l'image et le contenu -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Image en arrière-plan -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:contentDescription="@string/card_background_image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/card_background" />
+
+                    <!-- Contenu superposé -->
+                    <LinearLayout
+                        android:id="@+id/stats_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_half"
+                        android:layout_marginTop="@dimen/margin_half"
+                        android:layout_marginEnd="@dimen/margin_half"
+                        android:background="@drawable/rounded_background"
+                        android:orientation="horizontal"
+                        android:padding="16dp"> <!-- Fond semi-transparent -->
+
+                        <LinearLayout
+                            android:id="@+id/birthday_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="25dp"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+
+                            <LinearLayout
+                                android:id="@+id/ic_birthday_container"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/circular_background"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/ic_birthdayImgView"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_margin="@dimen/margin_half"
+                                    android:contentDescription="@string/ic_birthday"
+                                    android:src="@drawable/cake"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/user_ageTxtView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_wide"
+                                android:layout_marginTop="@dimen/margin_half"
+                                android:text="@string/user_age"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/height_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="25dp"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+
+                            <LinearLayout
+                                android:id="@+id/ic_height_container"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/circular_background"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/ic_heightImgView"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_margin="@dimen/margin_half"
+                                    android:contentDescription="@string/user_height"
+                                    android:src="@drawable/height"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/user_heightTxtView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_half"
+                                android:text="@string/user_heightTxt"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/weight_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="25dp"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+
+                            <LinearLayout
+                                android:id="@+id/ic_weight_container"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/circular_background"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/ic_weightImgView"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_margin="@dimen/margin_half"
+                                    android:contentDescription="@string/user_weight"
+                                    android:src="@drawable/weight"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/user_weightTxtView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_half"
+                                android:layout_marginTop="@dimen/margin_half"
+                                android:text="@string/user_weightTxt"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/gender_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+
+                            <LinearLayout
+                                android:id="@+id/ic_gender_container"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/circular_background"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/ic_genderImgView"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_margin="@dimen/margin_half"
+                                    android:contentDescription="@string/user_gender"
+                                    android:src="@drawable/genders"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/user_genderTxtView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_half"
+                                android:text="@string/user_genderTxtView"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|start"
+                        android:layout_marginBottom="@dimen/margin_half"
+                        android:padding="1dp">
+
+                        <LinearLayout
+                            android:id="@+id/current_stats_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            tools:ignore="UselessParent">
+
+
+                            <LinearLayout
+                                android:id="@+id/ic_stats_container"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="@dimen/margin_wide"
+                                android:background="@drawable/circular_background"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/ic_statsImgView"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_margin="@dimen/margin_half"
+                                    android:contentDescription="@string/current_statsimgview"
+                                    android:src="@drawable/loupe"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/current_statsTxtView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_half"
+                                android:layout_marginBottom="@dimen/margin_half"
+                                android:text="@string/current_stats"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/logOut_btn"
+                        style="@style/textStyleLight"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_margin="@dimen/margin_wide"
+                        android:background="@drawable/rounded_button"
+                        android:backgroundTint="@color/greenLight"
+                        android:padding="1dp"
+                        android:text="@string/more"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        tools:ignore="RtlCompat" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Custom Program Section -->
+            <TextView
+                style="@style/textStyleWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/custom_workout_program" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workout_program_RV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:nestedScrollingEnabled="false">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

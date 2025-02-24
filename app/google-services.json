@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "939264188300",
+    "project_id": "gfit-835dc",
+    "storage_bucket": "gfit-835dc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939264188300:android:d42467641fdf6fb9c100a9",
+        "android_client_info": {
+          "package_name": "com.example.gfit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlD38sAm_ulC15UFlLNFNbZeGetL9kkfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

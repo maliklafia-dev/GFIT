@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:id="@+id/form4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/do_you_take_supplements"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/takeSupplementsRdG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/yes_takeSupplementsRdG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"
+                android:textColor="@color/white"
+                android:layout_marginEnd="16dp" />
+
+            <RadioButton
+                android:id="@+id/do_not_takeSupplementsRdG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:textColor="@color/white" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_obstacles_do_you_face"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/obstacleEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:hint="@string/choose_from_obstacles"
+            android:layout_marginBottom="24dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_is_your_main_source_of_motivation"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/motivationEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:hint="@string/choose_your_motivation_source"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:layout_marginBottom="24dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_selected"
+                android:layout_margin="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_4_4"
+            android:textColor="#808080"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

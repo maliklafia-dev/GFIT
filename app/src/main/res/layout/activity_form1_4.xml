@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:id="@+id/form1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_should_we_call_you"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/full_nameEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_name"
+            android:inputType="text"
+            android:textColorHint="@android:color/darker_gray"
+            android:background="@drawable/rounded_edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:autofillHints="name"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tell_us_about_your_age"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/ageEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_spinner"
+            android:importantForAutofill="no"
+            android:hint="@string/enter_your_age"
+            android:padding="12dp"
+            android:inputType="number"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_about_your_sex"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/sexRdG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/maleRdG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/man"
+                android:textColor="@color/white"
+                android:layout_marginEnd="16dp" />
+
+            <RadioButton
+                android:id="@+id/femaleRdGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/woman"
+                android:textColor="@color/white"
+                android:layout_marginEnd="16dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_tall_are_you_in_cm"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/heightEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:importantForAutofill="no"
+            android:padding="12dp"
+            android:hint="@string/enter_your_height"
+            android:layout_marginBottom="24dp"
+            android:inputType="number"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_about_your_weight_in_kg"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/current_weightEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:hint="@string/enter_your_last_known_weight"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_would_be_your_target_weight_optional"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/target_weightEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="number"
+            android:hint="@string/enter_your_target_weight"
+            android:importantForAutofill="no"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_selected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_4"
+            android:textColor="#808080"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

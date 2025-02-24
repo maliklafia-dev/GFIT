@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/darkBlue"
+    android:contentDescription="@string/welcome1_image_content_description"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/welcome1_image_ImgView"
+        style="@style/ImageStyle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/margin_wide"
+        android:contentDescription="@string/welcome1_image_content_description"
+        app:srcCompat="@drawable/undraw_athletes_training_koqa" />
+
+    <TextView
+        android:id="@+id/congrat_txtView"
+        style="@style/textStyleWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome1_image_ImgView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="18dp"
+        android:text="@string/your_peronalized_workout_program_is_wating_you"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/helpus_txtView"
+        style="@style/textStyleLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/congrat_txtView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/margin_wide"
+        android:layout_marginEnd="20dp"
+        android:text="@string/go_to_your_profile_to_get_it"
+        android:textAlignment="center"
+        android:layout_marginBottom="100dp"
+        android:textColor="@color/green"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/letsgo_btn"
+        style="@style/Button"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpus_txtView"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/margin_wide"
+        android:text="@string/let_s_go"
+        tools:ignore="VisualLintButtonSize" />
+
+
+</RelativeLayout>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:id="@+id/form3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_would_you_describe_your_daily_activity"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/daily_activity_levelEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:hint="@string/choose_your_activity_level"
+            android:layout_marginBottom="24dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/do_you_practice_other_sports_or_physical_activities"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/practiceSportRdG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/yes_practiceSportRdG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"
+                android:textColor="@color/white"
+                android:layout_marginEnd="16dp" />
+
+            <RadioButton
+                android:id="@+id/do_not_practiceSportRdG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:textColor="@color/white" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/sport_practicedEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/specify_your_sport_if_yes"
+            android:textColorHint="@android:color/darker_gray"
+            android:background="@drawable/rounded_edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_is_your_diet"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/dietEdtText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:hint="@string/choose_your_diet"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_are_your_allergies"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/allergiesEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_allergies"
+            android:textColorHint="@android:color/darker_gray"
+            android:background="@drawable/rounded_edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_is_your_cooking_level"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/cookingLevelEdtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_spinner"
+            android:padding="12dp"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:hint="@string/choose_your_cooking_level"
+            android:layout_marginBottom="24dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_selected"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot_unselected"
+                android:layout_margin="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_3_4"
+            android:textColor="#808080"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

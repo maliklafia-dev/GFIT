@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/darkBlue"
+    android:contentDescription="@string/welcome1_image_content_description"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/welcomeTo"
+        style="@style/textStyleLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="@dimen/margin_wide"
+        android:text="@string/welcome_to"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/gFit_txt"
+        style="@style/textStyleWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/welcomeTo"
+        android:layout_alignTop="@+id/welcomeTo"
+        android:layout_alignEnd="@+id/welcomeTo"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="@dimen/margin_wide"
+        android:text="@string/gfit"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/welcome1_image_ImgView"
+        style="@style/ImageStyle"
+        android:layout_alignTop="@id/gFit_txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/welcome1_image_content_description"
+        app:srcCompat="@drawable/drawable_woman_blue" />
+
+    <TextView
+        android:id="@+id/getTransform_txtView"
+        style="@style/textStyleWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome1_image_ImgView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/get_transform_now"
+        android:textAlignment="center"
+        android:textColor="@color/green" />
+
+    <TextView
+        android:id="@+id/pass_txtView"
+        style="@style/textStyleLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="-24dp"
+        android:layout_marginBottom="75dp"
+        android:text="@string/pass_txtView"
+        tools:ignore="RelativeOverlap" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next_btn1"
+        style="@style/MaterialButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/next_button"
+        tools:ignore="RedundantDescriptionCheck" />
+
+</RelativeLayout>

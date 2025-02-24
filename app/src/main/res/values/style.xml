@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textStyleLight">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="fontWeight">300</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="textStyleWeight">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textFontWeight">1000</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="ImageStyle">
+        <item name="android:layout_height">300dp</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_marginStart">@dimen/margin_half</item>
+        <item name="android:layout_marginEnd">@dimen/margin_half</item>
+        <item name="android:layout_marginTop">100dp</item>
+    </style>
+
+    <style name="MaterialButton">
+        <item name="cornerRadius">90dp</item>
+        <item name="icon">@drawable/right_arrow</item>
+        <item name="iconSize">25dp</item>
+        <item name="iconTint">@color/white</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginBottom">70dp</item>
+        <item name="backgroundTint">@color/darkBlue</item>
+    </style>
+    <style name="Button">
+        <item name="background">@drawable/rounded_button</item>
+        <item name="cornerRadius">90dp</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/box_text_size</item>
+        <item name="android:layout_marginStart">@dimen/margin_wide</item>
+        <item name="android:layout_marginEnd">@dimen/margin_wide</item>
+        <item name="android:padding">10dp</item>
+        <item name="height">50dp</item>
+        <item name="android:layout_marginBottom">70dp</item>
+        <item name="backgroundTint">@color/darkBlue</item>
+    </style>
+
+    <style name="RelativeContainer">
+        <item name="paddingStart">12dp</item>
+        <item name="paddingEnd">12dp</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/grayTransparent</item>
+        <item name="android:layout_margin">@dimen/margin_wide</item>
+    </style>
+
+
+    <style name="EditText">
+        android:textColorHint="@android:color/darker_gray"
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
+
+</resources>

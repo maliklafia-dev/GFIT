@@ -1,0 +1,94 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="50dp"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp"
+    android:background="@color/black"
+    app:cardBackgroundColor="@color/black">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/card_border">
+
+        <!-- Image -->
+        <ImageView
+            android:id="@+id/card_workout_ImageImgView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/workout_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/julia_profile"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/rounded_image"/>
+
+        <!-- Texte et icône -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/card_workout_TitleTxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/push_ups"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/card_workout_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/workout_day"
+                style="@style/textStyleLight"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@string/ic_timer"
+                    android:src="@drawable/timer"/>
+
+                <TextView
+                    android:id="@+id/card_workout_Duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/workout_duration"
+                    style="@style/textStyleLight"
+                    android:layout_marginStart="@dimen/margin_half"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <!-- Bouton Start -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/card_workout_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_wide"
+            android:backgroundTint="@color/greenTransparent"
+            android:text="@string/start"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
