@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android) version "2.1.0"
@@ -5,6 +7,16 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.gms.google-services")
 }
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use { load(it) }
+    }
+}
+
+// Lire la clé API
+val googleGeminiApiKey: String = localProperties.getProperty("GOOGLE_GEMINI_API_KEY") ?: "null"
 
 android {
     namespace = "com.example.gfit"
@@ -28,10 +40,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "API_KEY", "\"${project.properties["GOOGLE_GEMINI_API_KEY"]}\"")
-        }
-        debug {
-            buildConfigField("String", "API_KEY", "\"${project.properties["GOOGLE_GEMINI_API_KEY"]}\"")
+            debug {
+                buildConfigField("String", "GEMINI_API_KEY", "\"$googleGeminiApiKey\"")
+            }
+            release {
+                buildConfigField("String", "GEMINI_API_KEY", "\"$googleGeminiApiKey\"")
+            }
         }
     }
     compileOptions {
@@ -57,8 +71,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.media3.common.ktx)
-    implementation(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.common)
+    implementation(libs.room.runtime)
+    ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.support.annotations)
     testImplementation(libs.junit)
@@ -68,6 +82,7 @@ dependencies {
     // Architecture Components
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
 
     // Hilt pour l'injection de dépendances
     implementation(libs.hilt.android)

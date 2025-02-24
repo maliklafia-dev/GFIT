@@ -11,26 +11,27 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.gfit.data.database.AppDatabase
 import com.example.gfit.databinding.ActivityLoginBinding
 import com.example.gfit.repositories.UserRepository
 import com.example.gfit.utilis.States
 import com.example.gfit.viewmodel.UserViewModel
 import com.example.gfit.viewmodel.factory.UserViewModelFactory
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var biding: ActivityLoginBinding
     private lateinit var userViewModel: UserViewModel
 
-    @OptIn(DelicateCoroutinesApi::class)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         biding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(biding.root)
 
-        val repository = UserRepository()
+        val database = AppDatabase.getDatabase(applicationContext)
+        val userDao = database.userDao()
+        val repository = UserRepository(userDao)
         val factory = UserViewModelFactory(repository)
         val loginBtn: Button = biding.loginBtn
         val signupTxt: TextView = biding.signupTxtView
@@ -54,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        signupTxt.setOnClickListener {
+        biding.signupTxtView.setOnClickListener {
              navigateToSignup()
          }
 
@@ -72,7 +73,12 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, it.text, Toast.LENGTH_SHORT).show()
                 }
                 is States.Success -> {
-                    navigateToWelcomeActivity5()
+                    if(userViewModel.currentUser()?.uid == null) {
+                        navigateToWelcomeActivity5()
+                    } else {
+                        navigateToMain()
+                    }
+
                 }
                 is States.Failed -> {
                     Toast.makeText(this@LoginActivity, it.message, Toast.LENGTH_SHORT).show()
@@ -112,12 +118,11 @@ class LoginActivity : AppCompatActivity() {
         return password.matches(passwordRegex)
     }
 
-    /*
     override fun onStart() {
         super.onStart()
         if(userViewModel.currentUser() != null){
-            navigateToFormActivity1()
+            navigateToMain()
         }
     }
-    */
+
 }

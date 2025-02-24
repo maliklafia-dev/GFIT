@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private const val BASE_URL = "https://generativelanguage.googleapis.com/v1beta/"
-    private const val API_KEY = "AIzaSyDXKFc7cnlebBD7QFlJT9I2CMvNCHXR7TI"
+    //private const val API_KEY = "AIzaSyDXKFc7cnlebBD7QFlJT9I2CMvNCHXR7TI"
+    private const val API_KEY = BuildConfig.GEMINI_API_KEY
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY

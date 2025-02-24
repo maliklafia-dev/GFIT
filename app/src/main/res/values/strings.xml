@@ -14,7 +14,6 @@
     <string name="join_team">Join a group who has the same objectives as you !</string>
     <string name="login_image">login_image</string>
     <string name="happy_to_see_you_back">Happy to see you back !</string>
-    <string name="email">email</string>
     <string name="enter_your_email">Enter your email</string>
     <string name="email_label">Email *</string>
     <string name="email_icon">email_icon</string>
@@ -90,7 +89,7 @@
     <string name="user_gender">user gender</string>
     <string name="user_genderTxtView">Woman</string>
     <string name="more">Log out</string>
-    <string name="current_stats">Current stats</string>
+    <string name="current_stats">Get my program !</string>
     <string name="current_statsimgview">current statsImgView</string>
     <string name="card_background_image">card_background_image</string>
     <string name="start">Start</string>

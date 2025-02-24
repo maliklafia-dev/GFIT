@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.gfit.data.database.AppDatabase
 import com.example.gfit.databinding.ActivitySignupBinding
 import com.example.gfit.repositories.UserRepository
 import com.example.gfit.utilis.States
@@ -22,14 +23,17 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var biding: ActivitySignupBinding
     private lateinit var userViewModel: UserViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         biding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(biding.root)
+        val database = AppDatabase.getDatabase(applicationContext)
+        val userDao = database.userDao()
 
         val signupBtn: Button = biding.signupBtn
         val loginTxt: TextView = biding.alreadyHaveAccountTxtView
-        val repository = UserRepository()
+        val repository = UserRepository(userDao)
         val factory = UserViewModelFactory(repository)
 
         userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]

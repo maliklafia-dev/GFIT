@@ -12,7 +12,7 @@ import com.example.gfit.data.network.dao.WorkoutProgramDao
 
 @Database(
     entities = [UserEntity::class, WorkoutProgramEntity::class],
-    version = 1
+    version = 1, exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

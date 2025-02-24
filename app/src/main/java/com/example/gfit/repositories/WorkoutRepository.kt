@@ -2,16 +2,24 @@ package com.example.gfit.repositories
 import android.util.Log
 import com.example.gfit.data.model.user.UserWorkoutPreferences
 import com.example.gfit.data.model.workout.WorkoutExercise
+import com.example.gfit.data.model.workout.WorkoutProgramEntity
+import com.example.gfit.data.network.dao.WorkoutProgramDao
 import com.example.gfit.data.network.dto.workout_dto.Part
 import com.example.gfit.data.network.dto.workout_dto.RequestContent
 import com.example.gfit.data.network.dto.workout_dto.WorkoutRequest
 import com.example.gfit.data.network.mapper.WorkoutMapper
 import com.example.gfit.data.network.service.RetrofitClient
+import com.example.gfit.data.network.service.WorkoutApiService
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class WorkoutRepository {
-    private val apiService = RetrofitClient.workoutApiService
+class WorkoutRepository(
+    private val apiService: WorkoutApiService = RetrofitClient.workoutApiService,
+    private val workoutProgramDao: WorkoutProgramDao
+) {
+
     private val apiKey = RetrofitClient.getApiKey()
 
     suspend fun fetchWorkoutPlan(userPreferences: UserWorkoutPreferences): List<WorkoutExercise> =
@@ -87,6 +95,37 @@ class WorkoutRepository {
             Generate a personalized plan based on this profile.
             Return ONLY the JSON array, without markdown formatting or additional text.
         """.trimIndent()
+    }
+    suspend fun saveWorkoutProgram(userId: String, exercises: List<WorkoutExercise>, preferences: UserWorkoutPreferences) {
+        workoutProgramDao.insertWorkoutProgram(
+            WorkoutProgramEntity(
+                userId = userId,
+                exercises = Gson().toJson(exercises),
+                preferences = Gson().toJson(preferences)
+            )
+        )
+    }
+
+    suspend fun getLatestWorkoutProgram(userId: String): List<WorkoutExercise>? {
+        return workoutProgramDao.getLatestWorkoutProgram(userId)?.let {
+            Gson().fromJson(
+                it.exercises,
+                object : TypeToken<List<WorkoutExercise>>() {}.type
+            )
+        }
+    }
+
+    suspend fun deleteUserPrograms(userId: String) {
+        workoutProgramDao.deleteUserWorkoutPrograms(userId)
+    }
+
+     suspend fun getUserPreferences(userId: String): UserWorkoutPreferences? {
+        return workoutProgramDao.getLatestWorkoutProgram(userId)?.let {
+         Gson().fromJson(
+             it.preferences,
+             object : TypeToken<UserWorkoutPreferences>() {}.type
+         )
+        }
     }
 
 }

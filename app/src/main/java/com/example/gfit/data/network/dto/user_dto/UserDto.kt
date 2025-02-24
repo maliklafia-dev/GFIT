@@ -1,8 +1,9 @@
 package com.example.gfit.data.network.dto.user_dto
 
-data class UserDto (
-    val email: String,
+data class UserInfos (
     val name: String,
-    val password: String,
+    val height: String,
+    val weight: String,
+    val sex: String
 )
 

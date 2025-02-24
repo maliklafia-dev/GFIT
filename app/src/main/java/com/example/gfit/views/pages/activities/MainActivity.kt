@@ -9,12 +9,12 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gfit.data.database.AppDatabase
 import com.example.gfit.data.model.user.UserWorkoutPreferences
+import com.example.gfit.data.network.service.RetrofitClient
 import com.example.gfit.databinding.ActivityMainBinding
 import com.example.gfit.repositories.UserRepository
 import com.example.gfit.viewmodel.SharedViewModel
@@ -32,13 +32,24 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val workoutAdapter = WorkoutAdapter()
-    private lateinit var userViewModel: UserViewModel
+
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModelFactory(
+            UserRepository(AppDatabase.getDatabase(this).userDao())
+        )
+    }
 
     private val sharedViewModel: SharedViewModel by lazy {
         SharedViewModelProvider.getSharedViewModel(this)
     }
+
     private val workoutViewModel: WorkoutViewModel by viewModels {
-        WorkoutViewModelFactory(WorkoutRepository())
+        WorkoutViewModelFactory(
+            WorkoutRepository(
+                RetrofitClient.workoutApiService,
+                AppDatabase.getDatabase(this).workoutProgramDao()
+            )
+        )
     }
 
     @SuppressLint("SetTextI18n")
@@ -47,25 +58,45 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val repository = UserRepository()
-        val factory = UserViewModelFactory(repository)
-        userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]
-
-
-        binding.fullNameTxtView.text = sharedViewModel.userPreferences.value?.name.toString()
-        binding.userAgeTxtView.text = sharedViewModel.userPreferences.value?.age.toString()
-        binding.userWeightTxtView.text = sharedViewModel.userPreferences.value?.weight.toString()+" kg"
-        binding.userHeightTxtView.text = sharedViewModel.userPreferences.value?.height.toString()+" cm"
-        binding.userGenderTxtView.text = sharedViewModel.userPreferences.value?.sex.toString()
-
-        setupRecyclerView()
         observeViewModels()
+        setupRecyclerView()
 
         binding.logOutBtn.setOnClickListener {
             userViewModel.logout()
             navigateToLogin()
         }
 
+        binding.getMyProgramTxtView.setOnClickListener {
+
+            navigateToFormActivity1()
+        }
+
+
+        binding.fullNameTxtView.text = sharedViewModel.userPreferences.value?.name.toString()
+        binding.userAgeTxtView.text = sharedViewModel.userPreferences.value?.age.toString()
+        binding.userWeightTxtView.text = sharedViewModel.userPreferences.value?.height.toString()+" cm"
+        binding.userWeightTxtView.text = sharedViewModel.userPreferences.value?.weight.toString()+" kg"
+        binding.userGenderTxtView.text = sharedViewModel.userPreferences.value?.sex.toString()
+
+        userViewModel.currentUser()?.uid?.let { userId ->
+            workoutViewModel.loadSavedWorkoutProgram(userId)
+            workoutViewModel.fetchUserInfos(userId)
+
+            workoutViewModel.infos.observe(this) { userInfos ->
+                binding.fullNameTxtView.text = userInfos?.name
+                binding.userAgeTxtView.text = userInfos?.age.toString()
+                binding.userHeightTxtView.text = userInfos?.height.toString()+" cm"
+                binding.userWeightTxtView.text = userInfos?.weight.toString()+" kg"
+                binding.userGenderTxtView.text = userInfos?.sex.toString()
+            }
+        }
+    }
+
+    private fun navigateToFormActivity1() {
+        Intent(this, FormActivity1::class.java).also {
+            startActivity(it)
+            finish()
+        }
     }
 
     private fun navigateToLogin() {
@@ -95,7 +126,9 @@ class MainActivity : AppCompatActivity() {
                             Log.d("MainActivity", "📥 Préférences reçues: $preferences")
                             if (isPreferencesComplete(preferences)) {
                                 Log.d("MainActivity", "✅ Données complètes, génération du programme")
-                                workoutViewModel.generateWorkoutPlan(preferences)
+                                userViewModel.currentUser()?.uid?.let { userId ->
+                                    workoutViewModel.generateWorkoutPlan(preferences, userId)
+                                }
                             }
                         }
                 }
@@ -119,9 +152,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
 
     private fun isPreferencesComplete(preferences: UserWorkoutPreferences): Boolean {
         return with(preferences) {
@@ -163,6 +193,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showError(message: String) {
+
         Snackbar.make(
             binding.root,
             message,
@@ -170,7 +201,9 @@ class MainActivity : AppCompatActivity() {
         ).setAction("Retry") {
             // Optionnel : permettre à l'utilisateur de réessayer
             sharedViewModel.userPreferences.value?.let {
-                workoutViewModel.generateWorkoutPlan(it)
+                userViewModel.currentUser()?.uid?.let { userId ->
+                    workoutViewModel.generateWorkoutPlan(it, userId)
+                }
             }
         }.show()
     }

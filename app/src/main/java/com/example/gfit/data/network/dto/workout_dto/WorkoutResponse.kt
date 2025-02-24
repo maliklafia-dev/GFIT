@@ -1,6 +1,5 @@
 package com.example.gfit.data.network.dto.workout_dto
 
-// WorkoutResponse.kt
 data class WorkoutResponse(
     val candidates: List<Candidate>
 )

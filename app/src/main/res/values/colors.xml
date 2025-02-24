@@ -10,6 +10,4 @@
     <color name="greenLight">#CB10B981</color>
     <color name="greenTransparent">#1A00D5A8</color>
     <color name="dark_background">#000000</color>
-    <color name="accent_green">#00D5A8</color>
-    <color name="card_background">#1A1A1A</color>
 </resources>
