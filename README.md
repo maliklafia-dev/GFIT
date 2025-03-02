@@ -31,26 +31,8 @@ graph TD
 
 ### Structure des packages
 
-com.example.gfit/
-├── data/
-│   ├── database/
-│   │   ├── dao/
-│   │   └── entity/
-│   ├── model/
-│   │   ├── user/
-│   │   └── workout/
-│   └── network/
-│       ├── dto/
-│       ├── mapper/
-│       └── service/
-├── repositories/
-├── utils/
-├── viewmodel/
-│   └── factory/
-└── views/
-    ├── adapters/
-    └── pages/
-        └── activities/
+![image](https://github.com/user-attachments/assets/c25774ca-d2e4-4796-8379-cf1217336232)
+
 
 ## Composants principaux
 
