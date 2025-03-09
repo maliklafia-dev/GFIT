@@ -243,4 +243,5 @@ when (state) {
 ![wireframe1](https://github.com/user-attachments/assets/2d535be9-31ff-4d6e-b9bc-b9ef3bf8fb4a)
 ![wireframe2](https://github.com/user-attachments/assets/634bd15e-68f9-4631-b766-fcac410ff374)
 ![wireframe3](https://github.com/user-attachments/assets/4b3b60e2-79fe-4b22-b1bc-ce491b630c61)
-https://github.com/user-attachments/assets/9bea5320-b560-46f9-9ab5-906b27654908
+https://github.com/user-attachments/assets/f9c7602c-3e6b-40c9-ae0d-2fe81b0a8942
+
